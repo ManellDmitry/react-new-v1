@@ -1,13 +1,17 @@
-import {Logo} from './Logo';
-import Navigation from './Navigation';
+import styled from "styled-components";
+import { Logo } from "./Logo";
+import Navigation from "./Navigation";
 
-
-function Header({x}) {
+const StyledHeader = styled.header`
+  flex: 0 1 auto;
+  background: red;
+`;
+function Header({ x }) {
   return (
-    <header>
-      <Logo color='black'/>
-      <Navigation links={x}/>
-    </header>
-  )
+    <StyledHeader>
+      <Logo color="black" />
+      <Navigation links={x} />
+    </StyledHeader>
+  );
 }
 export default Header;

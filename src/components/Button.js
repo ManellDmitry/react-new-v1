@@ -11,7 +11,7 @@ const commonStyles = `
  :hover{
   background-color: #fff;
   color: #000;
-  transition: all 0.5s;
+  transition: all 1s;
 }
 `;
 
@@ -27,21 +27,27 @@ const StyledLinkButton = styled.a`
   text-decoration: underline;
 `;
 
-export function Button ({type, label, handleClick}) {
+export function Button({ type, label, handleClick }) {
   return (
-    <StyledButton type={type ?? 'button'} onClick={handleClick}>{label}</StyledButton>
-  )
+    <StyledButton type={type ?? "button"} onClick={handleClick}>
+      {label}
+    </StyledButton>
+  );
 }
 
-export function IconButton ({iconId, label}) {
+export function IconButton({ iconId, label }) {
   return (
     <StyledButton>
       {label}
-      <Icon iconId={iconId}/>
+      <Icon iconId={iconId} />
     </StyledButton>
-  )
+  );
 }
 
-export function Link ({path, label, handleClick}) {
-  return (<StyledLinkButton href={path || ''} onClick={handleClick}>{label}</StyledLinkButton>)
+export function Link({ path, label, handleClick }) {
+  return (
+    <StyledLinkButton href={path || ""} onClick={handleClick}>
+      {label}
+    </StyledLinkButton>
+  );
 }
