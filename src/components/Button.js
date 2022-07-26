@@ -1,44 +1,47 @@
-import React from "react";
 import styled from "styled-components";
 import { Icon } from "./Icon";
-const commonStyles = ` 
-background-color: #1f1f1f;
-  color: #fff;
-  font-size: 18px;
-  line-height: 1.56;
-  padding: 8px 32px;
-  border-radius: 4px;
-  :hover {
-    background-color: #fff;
-    color: red;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
+
+const commonStyles = `
+ background-color: #1F1F1F;
+ color: #fff;
+ font-size: 18px;
+ line-height: 1.56;
+ padding: 8px 32px;
+ border-radius: 4px;
+ :hover{
+  background-color: #fff;
+  color: #000;
+  transition: all 0.5s;
+}
 `;
+
 const StyledButton = styled.button`
   ${commonStyles};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
+
 const StyledLinkButton = styled.a`
-  ${commonStyles}
+  ${commonStyles};
   text-decoration: underline;
 `;
-export function Button({ type, label, handleClick }) {
+
+export function Button ({type, label, handleClick}) {
   return (
-    <StyledButton type={type || "button"} onClick={handleClick}>
-      {label}
-    </StyledButton>
-  );
+    <StyledButton type={type ?? 'button'} onClick={handleClick}>{label}</StyledButton>
+  )
 }
-export function IconButton({ iconId }) {
+
+export function IconButton ({iconId, label}) {
   return (
     <StyledButton>
-      <Icon />
-    </StyledButton>
-  );
-}
-export function Link({ path, label, handleClick }) {
-  return (
-    <StyledLinkButton href={path || ``} onClick={handleClick}>
       {label}
-    </StyledLinkButton>
-  );
+      <Icon iconId={iconId}/>
+    </StyledButton>
+  )
+}
+
+export function Link ({path, label, handleClick}) {
+  return (<StyledLinkButton href={path || ''} onClick={handleClick}>{label}</StyledLinkButton>)
 }

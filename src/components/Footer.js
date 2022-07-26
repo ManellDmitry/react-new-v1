@@ -1,14 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import logo_white from "../images/whiteLogo.png";
+import styled from 'styled-components';
+import { Logo } from './Logo';
+
 const StyledFooter = styled.footer`
-  background-color: #6d6b67;
+  background-color: #6D6B67;
 `;
-function Footer() {
+
+function Footer(){
   return (
     <StyledFooter>
-      <img src={logo_white} alt="footer-logo" />
+      <Logo/>
     </StyledFooter>
-  );
+  )
 }
+
 export default Footer;

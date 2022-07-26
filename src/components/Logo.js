@@ -1,13 +1,7 @@
-import React from "react";
-import logoWhite from "../images/whiteLogo.png";
-import blackLogo from "../images/blackLogo.png";
-// function Logo({ color }) {
-//   return (
-//     <img src={color === "white" ? logoWhite : blackLogo} alt="white logo" />
-//   );
-// }
+import logo_white from '../images/logo-white.png';
+import logo_black from '../images/logo-black.png';
 
-const Logo = ({ color }) => (
-  <img src={color === "white" ? logoWhite : blackLogo} alt="white logo" />
-);
-export default Logo;
+export const Logo = ({color}) => 
+   <img src={color === 'white' ? logo_white : logo_black} alt='logo'/>
+
+

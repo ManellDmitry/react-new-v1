@@ -1,42 +1,45 @@
-import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
+
 const List = styled.ul`
   display: flex;
 `;
+
 const Item = styled.li`
   margin-right: 30px;
 `;
-function Navigation({ links }) {
-  // console.log('links', links)
+
+function Navigation ({links}) {
+
   const handleItemClick = () => {
-    console.log("item click");
-  };
+    console.log('Item click');
+  }
+
   const handleLinkClick = (e) => {
     e.preventDefault();
     console.log(e);
-    console.log("click");
-  };
-  const handleLinkMouseEnter = (e) => {
-    console.log("enter");
-  };
+    console.log('CLICK');
+  }
+
+  const handleLinkMouseEnter = (e)=>{
+    console.log(e);
+    console.log('ENTER');
+  }
+
   return (
     <nav>
       <List>
-        {links &&
-          links.map(({ id, label }) => (
-            <Item key={id} onClick={handleItemClick}>
-              <a
-                href="/"
-                onClick={handleLinkClick}
-                onMouseEnter={handleLinkMouseEnter}
-              >
-                {label}
-              </a>
-            </Item>
-          ))}
+        {links?.map(({id, label}) => (
+          <Item key={id} onClick={handleItemClick}>
+            <a 
+            href='/' 
+            onClick={handleLinkClick} 
+            onMouseEnter={handleLinkMouseEnter}
+            >{label}</a>
+          </Item>)
+        )}
       </List>
     </nav>
-  );
+  )
 }
 
 export default Navigation;
