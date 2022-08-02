@@ -1,9 +1,7 @@
-import React from 'react'
-
-export default function Our_Work({ kittens }) {
+export function OurWork({kittens}){
   return (
     <>
-      <h1>Our Work</h1>
+      <h1>Our work</h1>
     </>
   )
 }

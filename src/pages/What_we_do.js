@@ -1,70 +1,69 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { Button } from '../component/Button'
-import {InputText} from '../component/Input'
+import { useState, useEffect} from 'react';
+import {Button} from '../components/Button';
+import {InputText} from '../components/Input';
 
-const API_KEY = '563492ad6f917000010000019b12c0ae48b44b77908448361ebdac71'
-const Base_URL = 'https://api.pexels.com/v1/'
-const endPoint = 'search'
-const options = {
-  method: 'GET', // POST | PUT | PATCH | DELETE
-  headers: {
-    Authorization: API_KEY,
-  },
-}
+ // ===== CONSTANTS
+ const API_KEY = '563492ad6f91700001000001390f9fee0a794c1182a72e49e0e0eae2';
+ const BASE_URL = 'https://api.pexels.com/v1/';
+ const endpoint = 'search';
+ const options = {
+   // method: 'GET', // POST | PUT | PATCH | DELETE
+   headers: {
+     Authorization: API_KEY
+   },
+   // body: {}; // if POST | PUT | PATCH
+ }
+ // fetch(url, options).then(() => {}).then(() => {})
+ // ===== CONSTANTS
 
-export default function What_we_do() {
-  const [search, setSearch] = useState(null)
-  const [kittens, setKittens] = useState([])
+export function WhatWeDo(){
+  const [search, setSearch] = useState(null);
+  const [kittens, setKittens] = useState([]);
 
   useEffect(() => {
-    // console.log('search', search)
-  }, [search])
+    // console.log('search:', search);
+  }, [search]);
 
   useEffect(() => {
-    // console.log('kittens', kittens)
-  }, [kittens])
+    console.log('KITTENS:', kittens);
+  }, [kittens]);
 
   const handleInputChange = (e) => {
-    // console.log('value', e.target.value)
     setSearch(e.target.value)
   }
 
   const searchValue = () => {
-    if (search) {
-      // console.log('search')
-      let params = `?query=${search}&orientation=portrait&size=smll&per_page=5`
-      const url = Base_URL + endPoint + params
-      // console.log('url', url)
-      fetch(url, options)
-        .then((response) => {
-          // console.log('response', response)
-          return response.json()
-        })
-        .then((data) => {
-          // console.log('data', data)
-          return data.photos
-        })
-        .then((kittens) => {
-          setKittens(kittens) //rewrite
-          //setKittens((prev)=>{return [...prev,...kittens]})
-        })
+    if(search){
+      // console.log('SEARCH');
+      let params = `?query=${search}&orientaion=portrait&size=small&per_page=5`;
+      const url = BASE_URL + endpoint + params;
+      // console.log('url:', url);
+      fetch(url, options).then((response) => {
+        console.log('serponse:', response);
+        return response.json();
+      }).then((data) => {
+        console.log('data:', data);
+        return data.photos
+      }).then((kittens) => {
+        setKittens(kittens); // rewrite
+        // setKittents((prev)=>{ return [...prev, ...kittens] }) // add new kittens 
+      })
     }
   }
+
   return (
     <>
-      <h1>What we do</h1>
       <section>
-        <InputText placeholder= "enter value" handleChange={handleInputChange} />
-        <Button type="submit" label="search" handleClick={searchValue} />
+        {/* onChange={handleInputChange} === input,addEventListener('change', handleInputChange) */}
+        <InputText placeholder='enter value' handleChange={handleInputChange} xxx='111'/>
+        <Button type='submit' label='search' handleClick={searchValue}/>
         <ul>
-          {kittens.map(({ src: { tiny }, alt, id }) => {
-            // console.log('kitten', kitten)
+          {kittens.map(({src: {tiny}, alt, id}) => {
             return (
               <li key={id}>
-                <img src={tiny} alt={alt} />
+                <img src={tiny} alt={alt}/>
               </li>
-            )
+              )
           })}
         </ul>
       </section>
