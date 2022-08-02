@@ -39,7 +39,7 @@ export function Button ({isDisabled, type, label, handleClick}) {
 
 export function IconButton ({isDisabled, type, iconId, label, handleClick}) {
   const disabled = isDisabled === undefined ? false : isDisabled;
-  // console.log('disabled:', isDisabled,disabled);
+  
   return (
     <StyledButton disabled={disabled} type={type ?? 'button'} onClick={handleClick}>
       {label}
