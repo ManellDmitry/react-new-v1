@@ -1,23 +1,27 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 const List = styled.ul`
   display: flex;
-`;
+`
 
 const Item = styled.li`
   margin-right: 30px;
-`;
+`
 
 function Navigation({ links }) {
-  const handleItemClick = () => {};
-
+  // console.log('links', links)
+  const handleItemClick = () => {
+    // console.log('item click')
+  }
   const handleLinkClick = (e) => {
-    e.preventDefault();
-  };
-  const handleLinkMouseEnter = (e) => {};
-
+    // console.log(e)
+    // console.log('click')
+    // console.log(e.target.to)
+  }
+  const handleLinkMouseEnter = (e) => {
+    // console.log('enter')
+  }
   return (
     <nav>
       <List>
@@ -35,7 +39,7 @@ function Navigation({ links }) {
           ))}
       </List>
     </nav>
-  );
+  )
 }
 
-export default Navigation;
+export default Navigation

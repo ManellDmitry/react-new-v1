@@ -1,50 +1,67 @@
-import React from "react";
-import styled from "styled-components";
-import { Icon } from "./Icon";
+import React from 'react'
+import styled from 'styled-components'
+import { Icon } from './Icon'
 
 const commonStyles = `
 background-color: #1f1f1f;
-  color: #fff;
-  font-size: 18px;
-  line-height: 1.56;
-  padding: 8px 32px;
-  border-radius: 4px;
-  :hover {
-    background-color: #fff;
-    color: #000;
-    transition: all 0.5s;
-  }
-`;
+color: #fff;
+font-size: 18px;
+line-height: 1.56;
+padding: 8px 32px;
+border-radius:4px;
+:disabled {
+  background-color: grey;
+}
+:not(:disabled):hover{
+  background-color: #fff;
+  color: #000;
+  transition: all 0.5s;
+}
+`
 
 const StyledButton = styled.button`
   ${commonStyles};
-`;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 const StyledLinkButton = styled.a`
   ${commonStyles}
   text-decoration: underline;
-`;
+`
 
-export function Button({ type, label, handleClick }) {
+export function Button({ isDisabled, type, label, handleClick }) {
+  const disabled = isDisabled === undefined ? false : isDisabled
+
   return (
-    <StyledButton type={type || "button"} onClick={handleClick}>
+    <StyledButton
+      disabled={disabled}
+      type={type || 'button'}
+      onClick={handleClick}
+    >
       {label}
     </StyledButton>
-  );
+  )
 }
+export function IconButton({ isDisabled, iconId, type, label, handleClick }) {
+  const disabled = isDisabled === undefined ? false : isDisabled
 
-export function IconButton({ iconId }) {
   return (
-    <StyledButton>
+    <StyledButton
+      disabled={disabled}
+      type={type || 'button'}
+      onClick={handleClick}
+    >
+      {label}
       <Icon iconId={iconId} />
     </StyledButton>
-  );
+  )
 }
 
 export function Link({ path, label, handleClick }) {
   return (
-    <StyledLinkButton href={path || ""} onClick={handleClick}>
+    <StyledLinkButton href={path || ''} onClick={handleClick}>
       {label}
     </StyledLinkButton>
-  );
+  )
 }
