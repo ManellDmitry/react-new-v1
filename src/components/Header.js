@@ -1,7 +1,7 @@
-import {Logo} from './Logo';
-import Navigation from './Navigation';
-import { Container } from './styledComponents';
-import styled from 'styled-components';
+import { Logo } from "./Logo";
+import Navigation from "./Navigation";
+import { Container } from "./styledComponents";
+import styled from "styled-components";
 
 const StyledHeader = styled.header`
   flex: 0 1 auto;
@@ -16,14 +16,14 @@ const HeaderContainer = styled(Container)`
   padding-bottom: 20px;
 `;
 
-function Header({x}) {
+function Header() {
   return (
     <StyledHeader>
       <HeaderContainer>
-        <Logo color='black'/>
-        <Navigation links={x}/>
+        <Logo color="black" />
+        <Navigation />
       </HeaderContainer>
     </StyledHeader>
-  )
+  );
 }
 export default Header;
